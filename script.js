@@ -13,19 +13,30 @@ function createGrid(size = 16) {
 	}
 }
 
-createGrid();
+createGrid(16);
 
-const square = document.querySelectorAll(".square");
-square.forEach((item) =>
-	item.addEventListener("mouseenter", () => {
-		item.setAttribute("style", "background-color: black");
-	}),
-);
+function randomRGB() {
+	const r = Math.floor(Math.random() * 256);
+	const g = Math.floor(Math.random() * 256);
+	const b = Math.floor(Math.random() * 256);
+	return `rgb(${r},${g},${b})`;
+}
+
+function paintSquares() {
+	const square = document.querySelectorAll(".square");
+	square.forEach((item) =>
+		item.addEventListener("mouseenter", () => {
+			item.style.backgroundColor = randomRGB();
+		}),
+	);
+}
+paintSquares();
 
 const gridSize = document.querySelector("#gridSize");
+let newGrid;
 gridSize.addEventListener("click", (event) => {
 	event.preventDefault();
-	let newGrid = Number(prompt("Choose the grid size: "));
+	newGrid = Number(prompt("Choose the grid size: "));
 	console.log(newGrid);
 	while (true) {
 		if (newGrid > 0) {
@@ -35,4 +46,6 @@ gridSize.addEventListener("click", (event) => {
 		}
 	}
 	document.querySelector("#grid").replaceChildren();
+	createGrid(newGrid);
+	paintSquares();
 });
