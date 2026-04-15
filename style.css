@@ -1,0 +1,29 @@
+* {
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#grid {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.row {
+	display: flex;
+}
+
+.square {
+	border: solid black;
+	width: 10px;
+	height: 10px;
+}
+
+#gridSize {
+	border: solid black;
+	padding: 5px 10px;
+	border-radius: 10px;
+	margin: 10px;
+	margin-bottom: 0px;
+}
