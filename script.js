@@ -1,15 +1,19 @@
-for (let i = 0; i < 16; i++) {
-	const grid = document.querySelector("#grid");
-	const row = document.createElement("div");
-	row.setAttribute("class", "row");
-	grid.appendChild(row);
+function createGrid(size = 16) {
+	for (let i = 0; i < size; i++) {
+		const grid = document.querySelector("#grid");
+		const row = document.createElement("div");
+		row.setAttribute("class", "row");
+		grid.appendChild(row);
 
-	for (let j = 0; j < 16; j++) {
-		const square = document.createElement("div");
-		square.className = "square";
-		row.appendChild(square);
+		for (let j = 0; j < size; j++) {
+			const square = document.createElement("div");
+			square.className = "square";
+			row.appendChild(square);
+		}
 	}
 }
+
+createGrid();
 
 const square = document.querySelectorAll(".square");
 square.forEach((item) =>
@@ -30,4 +34,5 @@ gridSize.addEventListener("click", (event) => {
 			newGrid = Number(prompt("Invalid value. Please choose the grid size: "));
 		}
 	}
+	document.querySelector("#grid").replaceChildren();
 });
